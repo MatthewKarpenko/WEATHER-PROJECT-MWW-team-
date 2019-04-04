@@ -165,7 +165,7 @@
     <div class="humidChart"><canvas id="myChartHumid"></canvas></div>
   </div>
 
-  <div class="container hidden">
+  <div class="container hidden mapid">
     <div id="map"></div>
   </div>
 
@@ -270,37 +270,30 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMt80tdhU9MHyC8Mjhw6wq6Azl4WYXhSA&callback=initMap"
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMt80tdhU9MHyC8Mjhw6wq6Azl4WYXhSA"
     async defer></script>
-<script>
-  var map;
-  var lat = 51.509865;
-  var lng = -0.118092;
 
-  function hi() {
-    console.log('hi')
-  }
 
-  function initMap() {
+  <script>
+    let findButton = document.querySelector('#getCityName');
+    let mainInput = document.querySelector('.search__input');
+    let mapid = document.querySelector('.mapid')
+    var map;
+    let cityNamy 
+    let x;
+    let y;
+
+    function initMap() {
+      mapid.classList.remove('hidden')
     map = new google.maps.Map(document.getElementById("map"), {
       center: {
-        lat: lat,
-        lng: lng,
+        lat: x,
+        lng: y,
         mapTypeId: 'satellite'
       },
       zoom: 12
     });
   }
-</script>
-
-  <script>
-    let findButton = document.querySelector('#getCityName');
-    let mainInput = document.querySelector('.search__input');
-    console.log(mainInput)
-    let cityNamy 
-    let x;
-    let y;
-  
 
     var getJSON = function (url, callback) {
       var xhr = new XMLHttpRequest();
@@ -326,18 +319,18 @@
         alert("Please enter city name")
       }else {
         cityName = value;
-        console.log(cityName)
         shareCityName()
       }
     }
 
     function shareCityName() {
-     getJSON("http://api.openweathermap.org/data/2.5/weather?q="+ cityName + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1",
+     getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1",
      function (json) {
        console.log(json)
        x = json.coord.lat;
        y = json.coord.lon;
        console.log(x,y)
+       initMap()
      });
      
     }

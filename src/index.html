@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Materialize css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!--Materialize Icons-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <title> CODERS-WEATHER</title>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-wrapper" id="header">
+      <a href="#!" class="brand-logo center"><i class="material-icons">cloud</i>code weather</a>
+      <ul class="right hide-on-med-and-down">
+
+      </ul>
+    </div>
+  </nav>
+  <div class="container findCityContainer">
+    <div class="search__container">
+      <p class="search__title">
+        Search locations
+      </p>
+      <div id="app">
+        <form v-on:submit.prevent="getData">
+          <div class="input-group">
+            <input type="text" class="search__input browser-default" placeholder="Search" v-model="city">
+            <div class="input-group-append">
+              <button class="btn" type="submit" id="getCityName">Find</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- <input class="search__input browser-default" type="text" placeholder="Search"> -->
+  </div>
+  </div>
+  <h1 class="cityName">Wroclaw, Poland</h1>
+
+  <section>
+    <!--current weather section-->
+    <div class="currentWeatherContainer">
+
+      <div class="maxMinTemp hidden"><span id="minTemp">10&deg;</span><span id="maxTemp">19&deg;</span></div>
+
+      <div class="try">
+        <div class="mainInfo">
+
+          <div class="degreeNumber hidden">18&deg;</div>
+        </div>
+
+        <div class="wheatherType">
+          <p>Cloudy</p>
+          <p class="humidityIcon"><i class="material-icons">invert_colors</i>8%</p>
+        </div>
+      </div>
+
+      <div class="moreInfo">
+        <p>Clouds______________________<span id="main">Cloudy</span></p>
+        <p>Temperature________________<span id="temperature">18&deg;</span></p>
+        <p>Humidity____________________<span id="humidity">50%</span></p>
+        <p>Pressure_____________________<span id="pressure">30.14 in</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="fiveDaysWeatherHeader">Weather for 5 days</h2>
+    <div class="wheatherForFiveDaysBlock">
+
+      <img src="/static/img/arrow2.png" alt="leftPhoto" class="directionArrow" id="leftPhoto">
+
+      <div class="wholeBlock">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
+          </div>
+          <p class="particularDegree"></p>
+        </div>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
+        </div>
+      </div>
+
+      <div class="wholeBlock">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
+          </div>
+          <p class="particularDegree"></p>
+        </div>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
+        </div>
+      </div>
+
+      <div class="wholeBlock">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
+          </div>
+          <p class="particularDegree"></p>
+        </div>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
+        </div>
+      </div>
+
+      <div class="wholeBlock hidden">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
+          </div>
+          <p class="particularDegree">18&deg;</p>
+        </div>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
+        </div>
+      </div>
+
+      <div class="wholeBlock hidden">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
+          </div>
+          <p class="particularDegree"></p>
+        </div>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
+        </div>
+      </div>
+
+      <img src="/static/img/arrowRight2.png" alt="nextRightPhoto" class="directionArrow" id="rightPhoto">
+
+    </div>
+  </section>
+  <!--<button>Click</button>
+<p class="showJSON"></p>-->
+  <div class="chartContainer">
+    <div class="tempChart"><canvas id="myChartTemp"></canvas></div>
+    <div class="pressureChart"><canvas id="myChartPressure"></canvas></div>
+    <div class="humidChart"><canvas id="myChartHumid"></canvas></div>
+  </div>
+
+  <div class="container">
+    <div id="map"></div>
+  </div>
+
+  <footer class="page-footer" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+            content.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2018 "Coders-camp WAMM-team"
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+
+  <div class="hidden">
+
+    <div class="icon" id="simpleCloud">
+      <div class="cloud2 small-cloud"></div>
+      <div class="cloud2"></div>
+    </div>
+
+    <div class="icon" id="rainCloud">
+      <div class="cloud2"></div>
+      <div class="rain"></div>
+    </div>
+
+    <div class="icon" id="thunderCloud">
+      <div class="cloud2"></div>
+      <div class="thunder">
+        <div class="bolt"></div>
+        <div class="bolt"></div>
+      </div>
+    </div>
+
+    <div class="icon" id="sun">
+      <div class="rays">
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+      </div>
+      <div class="sun"></div>
+    </div>
+
+    <div class="icon" id="drizzleCloud">
+      <div class="cloud2"></div>
+      <div class="drizzle"></div>
+    </div>
+
+    <div class="icon" id="snow">
+      <div class="cloud2"></div>
+      <div class="snow">
+        <div class="flake"></div>
+        <div class="flake"></div>
+        <div class="flake"></div>
+        <div class="flake"></div>
+      </div>
+    </div>
+
+    <div class="icon" id="wind">
+      <div class="extreme text-center">
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMt80tdhU9MHyC8Mjhw6wq6Azl4WYXhSA&callback=initMap"
+    async defer></script>
+<script>
+  var map;
+  var lat = 51.509865;
+  var lng = -0.118092;
+
+  function hi() {
+    console.log('hi')
+  }
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: {
+        lat: lat,
+        lng: lng,
+        mapTypeId: 'satellite'
+      },
+      zoom: 12
+    });
+  }
+</script>
+
+  <script>
+    let findButton = document.querySelector('#getCityName');
+    let mainInput = document.querySelector('.search__input');
+    console.log(mainInput)
+    let cityNamy 
+    let x;
+    let y;
+  
+
+    var getJSON = function (url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'json';
+      xhr.onload = function () {
+        var status = xhr.status;
+        if (status === 200) {
+          callback(xhr.response);
+        } else {
+          callback(status, xhr.response);
+        
+        }
+      };
+      xhr.send();
+    }
+
+    function takeCity(e,callback) {
+      let value = mainInput.value
+
+      e.preventDefault();
+      if (value == ""){
+        alert("Please enter city name")
+      }else {
+        cityName = value;
+        console.log(cityName)
+        shareCityName()
+      }
+    }
+
+    function shareCityName() {
+     getJSON("http://api.openweathermap.org/data/2.5/weather?q="+ cityName + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1",
+     function (json) {
+       console.log(json)
+       x = json.coord.lat;
+       y = json.coord.lon;
+       console.log(x,y)
+     });
+     
+    }
+  
+    findButton.addEventListener('click', takeCity)
+  </script>
+  
+
+</body>
+
+</html>

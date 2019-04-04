@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Materialize css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!--Materialize Icons-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <title> CODERS-WEATHER</title>
+<link href="/static/css/app.css" rel="stylesheet"></head>
+<body>
+
+   <nav>
+     <div class="nav-wrapper" id="header">
+       <a href="#!" class="brand-logo center"><i class="material-icons">cloud</i>code weather</a>
+       <ul class="right hide-on-med-and-down">
+       
+       </ul>
+     </div>
+   </nav>
+<div class="container">
+<div class="search__container">
+  <p class="search__title">
+    Search locations
+  </p>
+  <input class="search__input browser-default" type="text" placeholder="Search">
+</div>
+</div>
+<h1 class="cityName">Wroclaw, Poland</h1>
+
+<section>
+<!--current weather section-->
+<div class="currentWeatherContainer">
+
+  <div class="maxMinTemp hidden"><span id="minTemp">10&deg;</span><span id="maxTemp">19&deg;</span></div>
+
+  <div class="try">
+    <div  class="mainInfo" >
+      <div class="icon" id="mainIcon">
+        <div class="cloud2"></div>
+        <div class="snow">
+          <div class="flake"></div>
+          <div class="flake"></div>
+          <div class="flake"></div>
+          <div class="flake"></div>
+        </div>
+      </div>
+      <div class="degreeNumber">18&deg;</div>
+    </div>
+  
+    <div class="wheatherType">
+      <p>Cloudy</p>
+      <p class="humidityIcon"><i class="material-icons">invert_colors</i>8%</p>
+    </div>
+  </div>
+  
+   <div class="moreInfo">
+     <p>Clouds______________________<span id="main">Cloudy</span></p>
+     <p>Temperature________________<span id="temperature">18&deg;</span></p>
+     <p>Humidity____________________<span id="humidity">50%</span></p>
+     <p>Pressure_____________________<span id="pressure">30.14 in</span></p>
+   </div>
+</div>
+</section>
+
+<section>
+  <h2 class="fiveDaysWeatherHeader">Weather for 5 days</h2>
+<div class="wheatherForFiveDaysBlock">
+
+    <img src="/static/img/arrow2.png" alt="leftPhoto" class="directionArrow" id="leftPhoto">
+  
+  <div class="wholeBlock">
+    <p class="date">Sunday, 26.03.19</p>
+  <div class="degreeType">
+  <div class="fideDays-element">
+      <div class="icon">
+        <div class="rays">
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+        </div>
+        <div class="sun"></div>
+      </div>
+  </div>
+  <p class="particularDegree">18&deg;</p>
+  </div>
+  <div class="particularInfo">
+    <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
+    <p>Humidity: <span class="smallHumidity">50%</span> </p>
+    <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
+  </div>
+</div>
+
+  <div class="wholeBlock">
+    <p class="date">Sunday, 27.03.19</p>
+    <div class="degreeType">
+      <div class="fideDays-element">
+        <div class="icon">
+          <div class="extreme text-center">
+            <div class="harsh-wind"></div>
+            <div class="harsh-wind"></div>
+            <div class="harsh-wind"></div>
+            <div class="harsh-wind"></div>
+            <div class="harsh-wind"></div>
+            <div class="harsh-wind"></div>
+            <div class="harsh-wind"></div>
+          </div>
+        </div>
+      </div>
+      <p class="particularDegree">18&deg;</p>
+    </div>
+    <div class="particularInfo">
+      <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
+      <p>Humidity: <span class="smallHumidity">50%</span> </p>
+      <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
+    </div>
+  </div>
+
+    <div class="wholeBlock">
+      <p class="date">Sunday, 28.03.19</p>
+      <div class="degreeType">
+        <div class="fideDays-element">
+          <div class="icon">
+            <div class="cloud2"></div>
+            <div class="snow">
+              <div class="flake"></div>
+              <div class="flake"></div>
+              <div class="flake"></div>
+              <div class="flake"></div>
+            </div>
+          </div>
+        </div>
+        <p class="particularDegree">18&deg;</p>
+      </div>
+      <div class="particularInfo">
+        <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
+        <p>Humidity: <span class="smallHumidity">50%</span> </p>
+        <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
+      </div>
+    </div>
+
+    <div class="wholeBlock hidden">
+      <p class="date">Sunday, 29.03.19</p>
+      <div class="degreeType">
+        <div class="fideDays-element">
+          <div class="icon">
+            <div class="cloud2"></div>
+            <div class="snow">
+              <div class="flake"></div>
+              <div class="flake"></div>
+              <div class="flake"></div>
+              <div class="flake"></div>
+            </div>
+          </div>
+        </div>
+        <p class="particularDegree">18&deg;</p>
+      </div>
+      <div class="particularInfo">
+        <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
+        <p>Humidity: <span class="smallHumidity">50%</span> </p>
+        <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
+      </div>
+    </div>
+
+    <div class="wholeBlock hidden">
+      <p class="date">Sunday, 30.03.19</p>
+      <div class="degreeType">
+        <div class="fideDays-element">
+        <div class="icon">
+          <div class="cloud2"></div>
+          <div class="thunder">
+            <div class="bolt"></div>
+            <div class="bolt"></div>
+          </div>
+        </div>
+        </div>
+        <p class="particularDegree">18&deg;</p>
+      </div>
+      <div class="particularInfo">
+        <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
+        <p>Humidity: <span class="smallHumidity">50%</span> </p>
+        <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
+      </div>
+    </div>
+
+    <img src="/static/img/arrowRight2.png" alt="nextRightPhoto" class="directionArrow" id="rightPhoto">
+      
+</div>
+</section>
+<!--<button>Click</button>
+<p class="showJSON"></p>-->
+
+
+
+           <footer class="page-footer" id="footer">
+             <div class="container">
+               <div class="row">
+                 <div class="col l6 s12">
+                   <h5 class="white-text">Footer Content</h5>
+                   <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                     content.</p>
+                 </div>
+                 <div class="col l4 offset-l2 s12">
+                   <h5 class="white-text">Links</h5>
+                   <ul>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                     <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                   </ul>
+                 </div>
+               </div>
+             </div>
+             <div class="footer-copyright">
+               <div class="container">
+                 © 2018 "Coders-camp WAMM-team"
+                 <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+               </div>
+             </div>
+           </footer>
+
+
+
+
+
+
+  <div class="hidden">
+  
+    <div class="icon">
+      <div class="cloud2 small-cloud"></div>
+      <div class="cloud2"></div>
+    </div>
+
+    <div class="icon">
+      <div class="cloud2"></div>
+      <div class="rain"></div>
+    </div>
+
+    <div class="icon">
+      <div class="cloud2"></div>
+      <div class="thunder">
+        <div class="bolt"></div>
+        <div class="bolt"></div>
+      </div>
+    </div>
+
+    <div class="icon">
+      <div class="rays">
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+      </div>
+      <div class="sun"></div>
+    </div>
+
+    <div class="icon">
+      <div class="cloud2"></div>
+      <div class="drizzle"></div>
+    </div>
+
+    <div class="icon">
+      <div class="cloud2"></div>
+      <div class="snow">
+        <div class="flake"></div>
+        <div class="flake"></div>
+        <div class="flake"></div>
+        <div class="flake"></div>
+      </div>
+    </div>
+
+    <div class="icon">
+      <div class="extreme text-center">
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+        <div class="harsh-wind"></div>
+      </div>
+    </div>
+
+  </div>
+
+ 
+
+  
+
+<!-- Compiled and minified JavaScript -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" src="/static/js/app.js"></script></body>
+</html>

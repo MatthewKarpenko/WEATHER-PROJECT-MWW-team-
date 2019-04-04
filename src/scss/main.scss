@@ -1,0 +1,23 @@
+//Import here different utilities which will help you write code faster and smarter
+@import "utils/libraries";
+@import "utils/vars";
+@import "utils/fonts";
+@import "utils/mixin";
+
+
+//Import here styles of particular parts of webpage
+@import "modules/footer.scss";
+@import "modules/icons.scss";
+@import "modules/mainClasses.scss";
+@import "modules/mainPart.scss";
+@import "modules/searchBar.scss";
+
+canvas {
+    width: 60vh;
+}
+
+canvas:empty {
+    display: none;
+    height: auto;
+}
+

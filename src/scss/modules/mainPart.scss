@@ -1,0 +1,212 @@
+body {
+    background-color: $default-color;
+    margin: 0px;
+}
+
+#searchDiv {
+    width: 250px;
+    margin: auto;
+}
+
+#footer,
+#header {
+    background-color: $gray-color;
+}
+
+//CURRENT WEATHER SECTION
+
+.cityName {
+    color: white;
+    text-align: center;
+    font-size: 3em;
+    margin: 5px;
+    margin-bottom: 3px;
+}
+
+.currentWeatherContainer {
+    display: flex;
+    position: relative;
+    width: 90%;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    .degreeNumber {
+        color: $success-color;
+        font-size: 110px;
+        margin-left: 20px;
+    }
+
+    .maxMinTemp {
+        position: absolute;
+        font-size: 34px;
+        color: white;
+            top: 58%;
+            left: 35%;
+
+            #minTemp {
+                color: $primary-color;
+                border-right: 2px solid white;
+            }
+
+            #maxTemp {
+                color: $orange-color;
+            }
+    }
+}
+
+.moreInfo {
+    display: flex;
+    justify-content: left;
+    margin-left: 10px;
+    flex-direction: column;
+    color: white;
+    font-size: 22px;
+    line-height: 22px;
+    border: 3px solid white;
+    padding: 14px;
+    border-radius: 15px;
+    width: 26%;
+    margin-left: 80px;
+
+        span {
+            color: $primary-color
+        }
+}
+
+.wheatherType {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+
+        p {
+            margin: 0;
+        }
+
+        .humidityIcon {
+            color: $primary-color;
+        }
+}
+
+.try {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.showJSON {
+    color: $color-accent;
+}
+
+.fiveDaysWeatherHeader {
+    color: $color-accent;
+    text-align: center;
+    font-size: 30px;
+}
+
+.wheatherForFiveDaysBlock {
+    display: flex;
+    justify-content: center;
+}
+
+.degreeType {
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    text-align: center; 
+    margin-left: 27px;
+    margin-top: 50px;
+    margin-bottom: 13px;
+
+        .particularDegree {
+            color: $success-color;
+            margin-bottom: 0px;
+            margin-top: 5px;
+            margin-right: -30px;
+            font-size: 40px;
+        }
+}
+
+.particularInfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-top: 40px;
+
+        p {
+           margin: 6px;
+           color: #f83;
+           font-size: 20px;
+
+            span {
+                color: $primary-color;
+            }
+        }
+}
+
+.wholeBlock {
+    position: relative;
+    display: flex;
+    width: 310px;
+       border: 2px solid gray;
+       border-radius: 20px;
+       cursor: pointer;
+       margin-left: 12px;
+       transition: 0.2s;
+}
+
+.wholeBlock:hover {
+    transform: scale(1.01);
+} 
+
+.date {
+        position: absolute;
+        left: 25%;
+        margin-top: 10px;
+        color: white;
+        font-size: 20px;
+}
+
+.directionArrow {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        transition: 0.3s;
+}
+
+.directionArrow {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        transition: 0.3s;
+}
+
+.directionArrow:hover {
+    transform: scale(1.1)
+}
+
+#map {
+    width: 900px;
+    height: 600px;
+    display: inline-block;
+}
+
+#getCityName {
+    display: block;
+    margin: auto;
+    background-color: #616161;
+}
+
+.findCityContainer {
+    margin-bottom: 40px;
+    
+}

@@ -1,5 +1,6 @@
 //let text = document.querySelector('.showJSON');
 //let button = document.querySelector('button');
+export function fiveDays(place) {
 let wheatherRequest;
 let temp;
 let time = 0;
@@ -23,7 +24,8 @@ let mainElements = {
     humidity: document.querySelector('#humidity'),
     humType: document.querySelector('.wheatherType'),
     pressure: document.querySelector('#pressure'),
-    info: document.querySelector('.mainInfo')
+    info: document.querySelector('.mainInfo'),
+    nameOfTheCity: document.querySelector('.cityName')
 }
 
 let options = {
@@ -38,18 +40,34 @@ let options = {
     second: 'numeric'
 };
 
+  var getJSON = function (url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'json';
+      xhr.onload = function () {
+          var status = xhr.status;
+          if (status === 200) {
+              callback(xhr.response);
+
+          } else {
+              callback(status, xhr.response);
+
+          }
+      };
+      xhr.send();
+  }
+
 
 function gettingJSONforFiveDays() {
-    getJSON("http://api.openweathermap.org/data/2.5/forecast?q=London&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
+    getJSON("http://api.openweathermap.org/data/2.5/forecast?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
         
         wheatherRequest = json.list;
         
-        setFiveDaysWheather()
-        // checking()
+        setFiveDaysWheather();
     });
 }
 
-window.onload = gettingJSONforFiveDays;
+
 
 function setFiveDaysWheather() {
     for (let i = 0; i < elements.block.length; i++) {
@@ -57,8 +75,8 @@ function setFiveDaysWheather() {
             time += 8;
         }
 
-        let date = new Date(wheatherRequest[time].dt_txt)
-
+        let date = new Date(wheatherRequest[time].dt_txt);
+        
         elements.block[i].querySelector('.date').innerHTML = date.toLocaleString('en-US', options).slice(0, 19);
         elements.block[i].querySelector('.particularDegree').innerHTML = Math.round(wheatherRequest[time].main.temp) + '&deg;';
         elements.block[i].querySelector('.smallDegree').innerHTML = Math.round(wheatherRequest[time].main.temp) + '&deg;';
@@ -70,7 +88,11 @@ function setFiveDaysWheather() {
 }
 
 function setIcon(node, description) {
-
+    if (node.firstElementChild !== null) {
+         for (let i = 0; i < node.children.length; i++){
+            node.children[i].remove()
+         }
+    }
     if (description == 'clear sky') {
         cloneDiv = elements.sun.cloneNode(true)
         node.appendChild(cloneDiv)
@@ -92,9 +114,12 @@ function setIcon(node, description) {
 
 let mainTempClone = mainElements.mainTemp.cloneNode(true);
 function currentWeather() {
-    getJSON("http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
+    getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
+        if (mainElements.info.firstElementChild.classList.contains('icon')) {
+            mainElements.info.firstElementChild.remove()
+        }
         setIcon(mainElements.info, json.weather[0].description);
-        
+    
         mainElements.info.firstElementChild.id = 'mainIcon'
         mainTempClone.innerHTML = Math.round(json.main.temp) + '&deg;';
         mainTempClone.classList.remove('hidden')
@@ -105,8 +130,13 @@ function currentWeather() {
         mainElements.pressure.innerText = json.main.pressure + ' in';
         mainElements.humType.firstChild.innerText = json.weather[0].description;
         mainElements.humType.children[1].innerHTML = '<i class="material-icons">invert_colors</i>' + json.main.humidity + '%';
+        mainElements.nameOfTheCity.innerHTML = place.charAt(0).toUpperCase() + place.slice(1);
+        mainElements.humType.firstElementChild.innerHTML = json.weather[0].description;
     
         
     });
 }
+gettingJSONforFiveDays();
 currentWeather();
+}
+

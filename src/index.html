@@ -43,7 +43,7 @@
   <!-- <input class="search__input browser-default" type="text" placeholder="Search"> -->
   </div>
   </div>
-  <h1 class="cityName">Wroclaw, Poland</h1>
+  <h1 class="cityName"></h1>
 
   <section>
     <!--current weather section-->
@@ -165,7 +165,7 @@
     <div class="humidChart"><canvas id="myChartHumid"></canvas></div>
   </div>
 
-  <div class="container mapid hidden">
+  <div class="container mapid">
     <div id="map-canvas"></div>
   </div>
 
@@ -275,6 +275,7 @@
    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMt80tdhU9MHyC8Mjhw6wq6Azl4WYXhSA"></script>
    
    <script>
+     /*
     let findButton = document.querySelector('#getCityName');
     let mainInput = document.querySelector('.search__input');
     let mapid = document.querySelector('.mapid')
@@ -283,19 +284,8 @@
     let x;
     let y;
     
-  //   function initMap() {
-  //     mapid.classList.remove('hidden')
-  //   map = new google.maps.Map(document.getElementById("map"), {
-  //     center: {
-  //       lat: x,
-  //       lng: y,
-  //       mapTypeId: 'satellite'
-  //     },
-  //     zoom: 12
-  //   });
-  // }
-    //function initMap() {
-              var map;
+
+        var map;
         var geoJSON;
         var request;
         var gettingData = false;
@@ -471,7 +461,7 @@
                     coordinates: [weatherItem.coord.Lon, weatherItem.coord.Lat]
                 }
             };
-            // Set the custom marker icon
+          
             map.data.setStyle(function (feature) {
                 return {
                     icon: {
@@ -499,8 +489,7 @@
                 map.data.remove(feature);
             });
         };
-       // google.maps.event.addDomListener(window, 'load', initialize);
-   // }
+       
     var getJSON = function (url, callback) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
@@ -538,14 +527,15 @@
        x = json.coord.lat;
        y = json.coord.lon;
        console.log(x,y)
-       //initMap()
        initialize()
      });
      
     }
   
     findButton.addEventListener('click', takeCity)
+    */
   </script>
+
   
 
 </body>

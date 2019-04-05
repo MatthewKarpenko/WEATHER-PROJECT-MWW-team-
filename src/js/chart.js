@@ -1,7 +1,6 @@
-/*import Chart from 'chart.js';
-let cityName; 
-let x;
-let y;
+ //import Chart from 'chart.js';
+// let buttonCity = document.querySelector('#getCityName');
+// let searchInput = document.querySelector('.search__input');
 var app = new Vue({
     el: "#app",
     data: {
@@ -11,7 +10,7 @@ var app = new Vue({
         temps: [],
         pressures: [],
         humidities: [],
-        coords: [],
+        coords: {},
         loading: false,
         errored: false,
 
@@ -19,26 +18,27 @@ var app = new Vue({
     methods: {
         getData: function () {
             this.loading = true;
-
+            console.log(this.loading)
             if (this.chart != null) {
                 this.chart.destroy();
             }
 
             axios
                 .get("https://api.openweathermap.org/data/2.5/forecast", {
+                    
                     params: {
                         q: this.city,
                         units: "metric",
                         appid: "1037ede13ab9fda54c38964a0a095a14"
                     }
+                    
                 })
+                
                 .then(response => {
 
-                    // this.coords = response.data.city.push(city => {
-                    //     return city.coord.lat;
-                    // });
-
-
+                    this.coords = response.data.city.coord;
+                    console.log(this.coords);
+                  
                     this.dates = response.data.list.map(list => {
                         return list.dt_txt;
                     });
@@ -55,41 +55,60 @@ var app = new Vue({
                         return list.main.humidity;
                     });
 
+
                     var ctx1 = document.getElementById("myChartTemp");
                     this.chart = new Chart(ctx1, {
                         type: "line",
                         data: {
                             labels: this.dates,
                             datasets: [{
-                                label: "Avg. Temperature °C",
+                                label: "Temperature °C",
                                 backgroundColor: "rgba(54, 162, 235, 0.5)",
                                 borderColor: "rgb(54, 162, 235)",
                                 fill: false,
                                 data: this.temps
+
                             }]
                         },
                         options: {
+                            title: {
+                                display: true,
+                                text: 'Temperature',
+                                fontSize: 24,
+                                fontStyle: 600,
+                                lineHeight: 1.3
+                            },
                             scales: {
                                 xAxes: [{
                                     type: "time",
                                     time: {
                                         unit: "hour",
                                         displayFormats: {
-                                            hour: "DD.MM h:mm"
+                                            hour: "hA MMM Do"
                                         },
-                                        tooltipFormat: "MMM. DD h:mm"
                                     },
                                     scaleLabel: {
-                                        display: true,
+                                        display: false,
                                         labelString: "Date.Time"
+                                    },
+                                    ticks: {
+                                        fontSize: 16,
+                                        fontStyle: 600
                                     }
                                 }],
                                 yAxes: [{
                                     scaleLabel: {
-                                        display: true,
+                                        display: false,
                                         labelString: "Temperature (°C)"
+                                    },
+                                    ticks: {
+                                        fontSize: 16,
+                                        fontStyle: 600
                                     }
                                 }]
+                            },
+                            legend: {
+                                display: false,
                             },
                             ticks: {
                                 callback: function (value, index, values) {
@@ -105,7 +124,7 @@ var app = new Vue({
                         data: {
                             labels: this.dates,
                             datasets: [{
-                                label: "Avg. Pressure hPa",
+                                label: "Pressure hPa",
                                 backgroundColor: "rgba(54, 162, 235, 0.5)",
                                 borderColor: "rgb(54, 162, 235)",
                                 fill: false,
@@ -113,27 +132,44 @@ var app = new Vue({
                             }]
                         },
                         options: {
+                            title: {
+                                display: true,
+                                text: 'Pressure',
+                                fontSize: 24,
+                                fontStyle: 600,
+                                lineHeight: 1.3
+                            },
                             scales: {
                                 xAxes: [{
                                     type: "time",
                                     time: {
                                         unit: "hour",
                                         displayFormats: {
-                                            hour: "DD.MM h:mm"
-                                        },
-                                        tooltipFormat: "MMM. DD h:mm"
+                                            hour: "hA MMM Do"
+                                        }
                                     },
                                     scaleLabel: {
-                                        display: true,
+                                        display: false,
                                         labelString: "Date.Time"
+                                    },
+                                    ticks: {
+                                        fontSize: 16,
+                                        fontStyle: 600
                                     }
                                 }],
                                 yAxes: [{
                                     scaleLabel: {
                                         display: true,
                                         labelString: "Pressure (hPa)"
+                                    },
+                                    ticks: {
+                                        fontSize: 16,
+                                        fontStyle: 600
                                     }
                                 }]
+                            },
+                            legend: {
+                                display: false
                             },
                             ticks: {
                                 callback: function (value, index, values) {
@@ -149,7 +185,7 @@ var app = new Vue({
                         data: {
                             labels: this.dates,
                             datasets: [{
-                                label: "Avg. Humidity %",
+                                label: "Humidity %",
                                 backgroundColor: "rgba(54, 162, 235, 0.5)",
                                 borderColor: "rgb(54, 162, 235)",
                                 fill: false,
@@ -157,27 +193,44 @@ var app = new Vue({
                             }]
                         },
                         options: {
+                            title: {
+                                display: true,
+                                text: 'Humidity',
+                                fontSize: 24,
+                                fontStyle: 600,
+                                lineHeight: 1.3
+                            },
                             scales: {
                                 xAxes: [{
                                     type: "time",
                                     time: {
                                         unit: "hour",
                                         displayFormats: {
-                                            hour: "DD.MM h:mm"
-                                        },
-                                        tooltipFormat: "MMM. DD h:mm"
+                                            hour: "hA MMM Do"
+                                        }
                                     },
                                     scaleLabel: {
-                                        display: true,
+                                        display: false,
                                         labelString: "Date.Time"
+                                    },
+                                    ticks: {
+                                        fontSize: 16,
+                                        fontStyle: 600
                                     }
                                 }],
                                 yAxes: [{
                                     scaleLabel: {
                                         display: true,
                                         labelString: "Humidity (%)"
+                                    },
+                                    ticks: {
+                                        fontSize: 16,
+                                        fontStyle: 600
                                     }
                                 }]
+                            },
+                            legend: {
+                                display: false
                             },
                             ticks: {
                                 callback: function (value, index, values) {
@@ -196,7 +249,5 @@ var app = new Vue({
                 })
         }
     }
+    
 });
-
-
-    */

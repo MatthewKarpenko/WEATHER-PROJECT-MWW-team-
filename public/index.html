@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,217 +12,191 @@
 
   <title> CODERS-WEATHER</title>
 <link href="/static/css/app.css" rel="stylesheet"></head>
+
 <body>
 
-   <nav>
-     <div class="nav-wrapper" id="header">
-       <a href="#!" class="brand-logo center"><i class="material-icons">cloud</i>code weather</a>
-       <ul class="right hide-on-med-and-down">
-       
-       </ul>
-     </div>
-   </nav>
-<div class="container">
-<div class="search__container">
-  <p class="search__title">
-    Search locations
-  </p>
-  <input class="search__input browser-default" type="text" placeholder="Search">
-</div>
-</div>
-<h1 class="cityName">Wroclaw, Poland</h1>
+  <nav>
+    <div class="nav-wrapper" id="header">
+      <a href="#!" class="brand-logo center"><i class="material-icons">cloud</i>code weather</a>
+      <ul class="right hide-on-med-and-down">
 
-<section>
-<!--current weather section-->
-<div class="currentWeatherContainer">
-
-  <div class="maxMinTemp hidden"><span id="minTemp">10&deg;</span><span id="maxTemp">19&deg;</span></div>
-
-  <div class="try">
-    <div  class="mainInfo" >
-      <div class="icon" id="mainIcon">
-        <div class="cloud2"></div>
-        <div class="snow">
-          <div class="flake"></div>
-          <div class="flake"></div>
-          <div class="flake"></div>
-          <div class="flake"></div>
-        </div>
-      </div>
-      <div class="degreeNumber">18&deg;</div>
+      </ul>
     </div>
-  
-    <div class="wheatherType">
-      <p>Cloudy</p>
-      <p class="humidityIcon"><i class="material-icons">invert_colors</i>8%</p>
-    </div>
-  </div>
-  
-   <div class="moreInfo">
-     <p>Clouds______________________<span id="main">Cloudy</span></p>
-     <p>Temperature________________<span id="temperature">18&deg;</span></p>
-     <p>Humidity____________________<span id="humidity">50%</span></p>
-     <p>Pressure_____________________<span id="pressure">30.14 in</span></p>
-   </div>
-</div>
-</section>
-
-<section>
-  <h2 class="fiveDaysWeatherHeader">Weather for 5 days</h2>
-<div class="wheatherForFiveDaysBlock">
-
-    <img src="/static/img/arrow2.png" alt="leftPhoto" class="directionArrow" id="leftPhoto">
-  
-  <div class="wholeBlock">
-    <p class="date">Sunday, 26.03.19</p>
-  <div class="degreeType">
-  <div class="fideDays-element">
-      <div class="icon">
-        <div class="rays">
-          <div class="ray"></div>
-          <div class="ray"></div>
-          <div class="ray"></div>
-          <div class="ray"></div>
-        </div>
-        <div class="sun"></div>
-      </div>
-  </div>
-  <p class="particularDegree">18&deg;</p>
-  </div>
-  <div class="particularInfo">
-    <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
-    <p>Humidity: <span class="smallHumidity">50%</span> </p>
-    <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
-  </div>
-</div>
-
-  <div class="wholeBlock">
-    <p class="date">Sunday, 27.03.19</p>
-    <div class="degreeType">
-      <div class="fideDays-element">
-        <div class="icon">
-          <div class="extreme text-center">
-            <div class="harsh-wind"></div>
-            <div class="harsh-wind"></div>
-            <div class="harsh-wind"></div>
-            <div class="harsh-wind"></div>
-            <div class="harsh-wind"></div>
-            <div class="harsh-wind"></div>
-            <div class="harsh-wind"></div>
-          </div>
-        </div>
-      </div>
-      <p class="particularDegree">18&deg;</p>
-    </div>
-    <div class="particularInfo">
-      <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
-      <p>Humidity: <span class="smallHumidity">50%</span> </p>
-      <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
-    </div>
-  </div>
-
-    <div class="wholeBlock">
-      <p class="date">Sunday, 28.03.19</p>
-      <div class="degreeType">
-        <div class="fideDays-element">
-          <div class="icon">
-            <div class="cloud2"></div>
-            <div class="snow">
-              <div class="flake"></div>
-              <div class="flake"></div>
-              <div class="flake"></div>
-              <div class="flake"></div>
+  </nav>
+  <div class="container findCityContainer">
+    <div class="search__container">
+      <p class="search__title">
+        Search locations
+      </p>
+      <div id="app">
+        <form v-on:submit.prevent="getData">
+          <div class="input-group">
+            <input type="text" class="search__input browser-default" placeholder="Search" v-model="city">
+            <div class="input-group-append">
+              <button class="btn" type="submit" id="getCityName">Find</button>
             </div>
           </div>
-        </div>
-        <p class="particularDegree">18&deg;</p>
-      </div>
-      <div class="particularInfo">
-        <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
-        <p>Humidity: <span class="smallHumidity">50%</span> </p>
-        <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
+        </form>
       </div>
     </div>
+  </div>
+  <!-- <input class="search__input browser-default" type="text" placeholder="Search"> -->
+  </div>
+  </div>
+  <h1 class="cityName"></h1>
 
-    <div class="wholeBlock hidden">
-      <p class="date">Sunday, 29.03.19</p>
-      <div class="degreeType">
-        <div class="fideDays-element">
-          <div class="icon">
-            <div class="cloud2"></div>
-            <div class="snow">
-              <div class="flake"></div>
-              <div class="flake"></div>
-              <div class="flake"></div>
-              <div class="flake"></div>
-            </div>
+  <section>
+    <!--current weather section-->
+    <div class="currentWeatherContainer">
+
+      <div class="maxMinTemp hidden"><span id="minTemp">10&deg;</span><span id="maxTemp">19&deg;</span></div>
+
+      <div class="try">
+        <div class="mainInfo">
+
+          <div class="degreeNumber hidden">18&deg;</div>
+        </div>
+
+        <div class="wheatherType">
+          <p>Cloudy</p>
+          <p class="humidityIcon"><i class="material-icons">invert_colors</i>8%</p>
+        </div>
+      </div>
+<!--<span class="hide-on-med-and-down"></span> -->
+      <div class="moreInfo">
+        <p>Clouds______________________<span id="main">Cloudy</span></p>
+        <p>Temperature________________<span id="temperature">18&deg;</span></p>
+        <p>Humidity____________________<span id="humidity">50%</span></p>
+        <p>Pressure_____________________<span id="pressure">30.14 in</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="fiveDaysWeatherHeader">Weather for 5 days</h2>
+    <div class="wheatherForFiveDaysBlock">
+
+      <img src="/static/img/arrow2.png" alt="leftPhoto" class="directionArrow" id="leftPhoto">
+
+      <div class="wholeBlock">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
           </div>
+          <p class="particularDegree"></p>
         </div>
-        <p class="particularDegree">18&deg;</p>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
+        </div>
       </div>
-      <div class="particularInfo">
-        <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
-        <p>Humidity: <span class="smallHumidity">50%</span> </p>
-        <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
-      </div>
-    </div>
 
-    <div class="wholeBlock hidden">
-      <p class="date">Sunday, 30.03.19</p>
-      <div class="degreeType">
-        <div class="fideDays-element">
-        <div class="icon">
-          <div class="cloud2"></div>
-          <div class="thunder">
-            <div class="bolt"></div>
-            <div class="bolt"></div>
+      <div class="wholeBlock">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
           </div>
+          <p class="particularDegree"></p>
         </div>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
         </div>
-        <p class="particularDegree">18&deg;</p>
       </div>
-      <div class="particularInfo">
-        <p>Temperature: <span class="smallDegree">18&deg;</span> </p>
-        <p>Humidity: <span class="smallHumidity">50%</span> </p>
-        <p>Pressure: <span class="smallPressure">30.14 in</span> </p>
-      </div>
-    </div>
 
-    <img src="/static/img/arrowRight2.png" alt="nextRightPhoto" class="directionArrow" id="rightPhoto">
-      
-</div>
-</section>
-<!--<button>Click</button>
+      <div class="wholeBlock">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
+          </div>
+          <p class="particularDegree"></p>
+        </div>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
+        </div>
+      </div>
+
+      <div class="wholeBlock hidden">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
+          </div>
+          <p class="particularDegree">18&deg;</p>
+        </div>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
+        </div>
+      </div>
+
+      <div class="wholeBlock hidden">
+        <p class="date"></p>
+        <div class="degreeType">
+          <div class="fideDays-element">
+
+          </div>
+          <p class="particularDegree"></p>
+        </div>
+        <div class="particularInfo">
+          <p>Temperature: <span class="smallDegree"></span> </p>
+          <p>Humidity: <span class="smallHumidity"></span> </p>
+          <p>Pressure: <span class="smallPressure"></span> </p>
+        </div>
+      </div>
+
+      <img src="/static/img/arrowRight2.png" alt="nextRightPhoto" class="directionArrow" id="rightPhoto">
+
+    </div>
+  </section>
+  <!--<button>Click</button>
 <p class="showJSON"></p>-->
+  <div class="chartContainer">
+    <div class="tempChart"><canvas id="myChartTemp"></canvas></div>
+    <div class="pressureChart"><canvas id="myChartPressure"></canvas></div>
+    <div class="humidChart"><canvas id="myChartHumid"></canvas></div>
+  </div>
+
+  <div class="container mapid">
+    <div id="map-canvas"></div>
+  </div>
+  
 
 
-
-           <footer class="page-footer" id="footer">
-             <div class="container">
-               <div class="row">
-                 <div class="col l6 s12">
-                   <h5 class="white-text">Footer Content</h5>
-                   <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
-                     content.</p>
-                 </div>
-                 <div class="col l4 offset-l2 s12">
-                   <h5 class="white-text">Links</h5>
-                   <ul>
-                     <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                     <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                     <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                     <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                   </ul>
-                 </div>
-               </div>
-             </div>
-             <div class="footer-copyright">
-               <div class="container">
-                 © 2018 "Coders-camp WAMM-team"
-                 <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-               </div>
-             </div>
-           </footer>
+  <footer class="page-footer" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Footer Content</h5>
+          <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+            content.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2018 "Coders-camp WAMM-team"
+        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+      </div>
+    </div>
+  </footer>
 
 
 
@@ -229,18 +204,18 @@
 
 
   <div class="hidden">
-  
-    <div class="icon">
+
+    <div class="icon" id="simpleCloud">
       <div class="cloud2 small-cloud"></div>
       <div class="cloud2"></div>
     </div>
 
-    <div class="icon">
+    <div class="icon" id="rainCloud">
       <div class="cloud2"></div>
       <div class="rain"></div>
     </div>
 
-    <div class="icon">
+    <div class="icon" id="thunderCloud">
       <div class="cloud2"></div>
       <div class="thunder">
         <div class="bolt"></div>
@@ -248,7 +223,7 @@
       </div>
     </div>
 
-    <div class="icon">
+    <div class="icon" id="sun">
       <div class="rays">
         <div class="ray"></div>
         <div class="ray"></div>
@@ -258,12 +233,12 @@
       <div class="sun"></div>
     </div>
 
-    <div class="icon">
+    <div class="icon" id="drizzleCloud">
       <div class="cloud2"></div>
       <div class="drizzle"></div>
     </div>
 
-    <div class="icon">
+    <div class="icon" id="snow">
       <div class="cloud2"></div>
       <div class="snow">
         <div class="flake"></div>
@@ -273,7 +248,7 @@
       </div>
     </div>
 
-    <div class="icon">
+    <div class="icon" id="wind">
       <div class="extreme text-center">
         <div class="harsh-wind"></div>
         <div class="harsh-wind"></div>
@@ -287,12 +262,284 @@
 
   </div>
 
- 
+
+
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMt80tdhU9MHyC8Mjhw6wq6Azl4WYXhSA"
+    async defer></script> -->
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMt80tdhU9MHyC8Mjhw6wq6Azl4WYXhSA"></script>
+   
+   <script>
+     /*
+    let findButton = document.querySelector('#getCityName');
+    let mainInput = document.querySelector('.search__input');
+    let mapid = document.querySelector('.mapid')
+    var map;
+    let cityNamy 
+    let x;
+    let y;
+    
+
+        var map;
+        var geoJSON;
+        var request;
+        var gettingData = false;
+        var openWeatherMapKey = "f7d78a32bb25ee5de1c6ce5f4954f4ce"
+       
+        function initialize() {
+ mapid.classList.remove('hidden')
+            var mapOptions = {
+                zoom: 10,
+                center: new google.maps.LatLng(x, y),
+                styles: [
+                {elementType: 'geometry', stylers: [{color: '#212121'}]},
+                {elementType: 'labels.text.stroke', stylers: [{color: '#212121'}]},
+                {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+                {
+                featureType: 'administrative.locality',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#d59563'}]
+                },
+                {
+                featureType: 'poi',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#d59563'}]
+                },
+                {
+                featureType: 'poi.park',
+                elementType: 'geometry',
+                stylers: [{color: '#263c3f'}]
+                },
+                {
+                featureType: 'poi.park',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#6b9a76'}]
+                },
+                
+                {
+                featureType: 'road',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#9ca5b3'}]
+                },
+                {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{color: '#746855'}]
+                },
+                {
+                featureType: 'road.highway',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#1f2835'}]
+                },
+                {
+                featureType: 'road.highway',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#f3d19c'}]
+                },
+                {
+                featureType: 'transit',
+                elementType: 'geometry',
+                stylers: [{color: '#2f3948'}]
+                },
+                {
+                featureType: 'transit.station',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#d59563'}]
+                },
+                {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [{color: '#17263c'}]
+                },
+                {
+                featureType: 'water',
+                elementType: 'labels.text.fill',
+                stylers: [{color: '#515c6d'}]
+                },
+                {
+                featureType: 'water',
+                elementType: 'labels.text.stroke',
+                stylers: [{color: '#17263c'}]
+                }
+                ]
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+            // Add interaction listeners to make weather requests
+            google.maps.event.addListener(map, 'idle', checkIfDataRequested);
+            // Sets up and populates the info window with details
+            map.data.addListener('click', function (event) {
+                infowindow.setContent(
+                    "<img src=" + event.feature.getProperty("icon") + ">" +
+                    "<br /><strong>" + event.feature.getProperty("city") + "</strong>" +
+                    "<br />" + event.feature.getProperty("temperature") + "&deg;C" +
+                    "<br />" + event.feature.getProperty("weather")
+                );
+                infowindow.setOptions({
+                    position: {
+                        lat: event.latLng.lat(),
+                        lng: event.latLng.lng()
+                    },
+                    pixelOffset: {
+                        width: 0,
+                        height: -15
+                    }
+                });
+                infowindow.open(map);
+            });
+        }
+        var checkIfDataRequested = function () {
+            // Stop extra requests being sent
+            while (gettingData === true) {
+                request.abort();
+                gettingData = false;
+            }
+            getCoords();
+        };
+        // Get the coordinates from the Map bounds
+        var getCoords = function () {
+            var bounds = map.getBounds();
+            var NE = bounds.getNorthEast();
+            var SW = bounds.getSouthWest();
+            getWeather(NE.lat(), NE.lng(), SW.lat(), SW.lng());
+        };
+        // Make the weather request
+        var getWeather = function (northLat, eastLng, southLat, westLng) {
+            gettingData = true;
+            var requestString = "http://api.openweathermap.org/data/2.5/box/city?bbox=" +
+                westLng + "," + northLat + "," //left top
+                +
+                eastLng + "," + southLat + "," //right bottom
+                +
+                map.getZoom() +
+                "&cluster=yes&format=json" +
+                "&APPID=" + openWeatherMapKey;
+            request = new XMLHttpRequest();
+            request.onload = proccessResults;
+            request.open("get", requestString, true);
+            request.send();
+        };
+        // Take the JSON results and proccess them
+        var proccessResults = function () {
+            console.log(this);
+            var results = JSON.parse(this.responseText);
+            if (results.list.length > 0) {
+                resetData();
+                for (var i = 0; i < results.list.length; i++) {
+                    geoJSON.features.push(jsonToGeoJson(results.list[i]));
+                }
+                drawIcons(geoJSON);
+            }
+        };
+        var infowindow = new google.maps.InfoWindow();
+        // For each result that comes back, convert the data to geoJSON
+        var jsonToGeoJson = function (weatherItem) {
+            var feature = {
+                type: "Feature",
+                properties: {
+                    city: weatherItem.name,
+                    weather: weatherItem.weather[0].main,
+                    temperature: weatherItem.main.temp,
+                    min: weatherItem.main.temp_min,
+                    max: weatherItem.main.temp_max,
+                    humidity: weatherItem.main.humidity,
+                    pressure: weatherItem.main.pressure,
+                    windSpeed: weatherItem.wind.speed,
+                    windDegrees: weatherItem.wind.deg,
+                    windGust: weatherItem.wind.gust,
+                    icon: "http://openweathermap.org/img/w/" +
+                        weatherItem.weather[0].icon + ".png",
+                    coordinates: [weatherItem.coord.Lon, weatherItem.coord.Lat]
+                },
+                geometry: {
+                    type: "Point",
+                    coordinates: [weatherItem.coord.Lon, weatherItem.coord.Lat]
+                }
+            };
+          
+            map.data.setStyle(function (feature) {
+                return {
+                    icon: {
+                        url: feature.getProperty('icon'),
+                        anchor: new google.maps.Point(25, 25)
+                    }
+                };
+            });
+            // returns object
+            return feature;
+        };
+        // Add the markers to the map
+        var drawIcons = function (weather) {
+            map.data.addGeoJson(geoJSON);
+            // Set the flag to finished
+            gettingData = false;
+        };
+        // Clear data layer and geoJSON
+        var resetData = function () {
+            geoJSON = {
+                type: "FeatureCollection",
+                features: []
+            };
+            map.data.forEach(function (feature) {
+                map.data.remove(feature);
+            });
+        };
+       
+    var getJSON = function (url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'json';
+      xhr.onload = function () {
+        var status = xhr.status;
+        if (status === 200) {
+          callback(xhr.response);
+        } else {
+          callback(status, xhr.response);
+        
+        }
+      };
+      xhr.send();
+    }
+
+
+    function takeCity(e,callback) {
+      let value = mainInput.value
+
+      e.preventDefault();
+      if (value == ""){
+        alert("Please enter city name")
+      }else {
+        cityName = value;
+        shareCityName()
+        
+      }
+    }
+
+    function shareCityName() {
+     getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1",
+     function (json) {
+       console.log(json)
+       x = json.coord.lat;
+       y = json.coord.lon;
+       console.log(x,y)
+       initialize()
+     });
+     
+    }
+  
+    findButton.addEventListener('click', takeCity)
+    */
+  </script>
 
   
 
-<!-- Compiled and minified JavaScript -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript" src="/static/js/app.js"></script></body>
+
 </html>

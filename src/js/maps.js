@@ -4,8 +4,9 @@ export function fiveDays(place) {
 let wheatherRequest;
 let temp;
 let time = 0;
-let cloneDiv
+let cloneDiv;
 
+//object z ikonami
 let elements = {
     block: document.querySelectorAll('.wholeBlock'),
     cloud: document.querySelector('#simpleCloud'),
@@ -16,6 +17,7 @@ let elements = {
     snow: document.querySelector('#snow'),
     wind: document.querySelector('#wind')
 };
+
 
 let mainElements = {
     mainTemp: document.querySelector('.degreeNumber'),
@@ -62,7 +64,8 @@ function gettingJSONforFiveDays() {
     getJSON("http://api.openweathermap.org/data/2.5/forecast?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
         
         wheatherRequest = json.list;
-        
+      //przykład uzyskania json
+        console.log(wheatherRequest)
         setFiveDaysWheather();
     });
 }
@@ -86,7 +89,7 @@ function setFiveDaysWheather() {
         setIcon(elements.block[i].querySelector('.fideDays-element'), weatherDescription)
     }
 }
-
+// w tej funkcji działasz
 function setIcon(node, description) {
     if (node.firstElementChild !== null) {
          for (let i = 0; i < node.children.length; i++){

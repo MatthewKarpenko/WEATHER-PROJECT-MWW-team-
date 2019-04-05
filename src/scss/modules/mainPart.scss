@@ -68,7 +68,7 @@ body {
     border: 3px solid white;
     padding: 14px;
     border-radius: 15px;
-    width: 26%;
+    width: 400px;
     margin-left: 80px;
 
         span {
@@ -211,8 +211,12 @@ body {
      height: 500px;
      margin: auto;
      margin-top: 30px;
+     //@include media ((
+        // width:(lg: 1000px, md: 700px, sm:400px),
+     //height:(lg: 500px, md:350px, sm:200px)))
 }
 
 .gm-style-iw {
     text-align: center;
 }
+

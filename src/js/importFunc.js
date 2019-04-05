@@ -4,7 +4,7 @@ import {showMap} from './map.js';
 
 let findButton = document.querySelector('#getCityName');
 let mainInput = document.querySelector('.search__input');
-let mapid = document.querySelector('.mapid')
+
 
 let place = {
     cityName: null,

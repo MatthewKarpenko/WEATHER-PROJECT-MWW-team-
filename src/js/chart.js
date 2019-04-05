@@ -72,7 +72,8 @@ var app = new Vue({
                                 text: 'Temperature',
                                 fontSize: 24,
                                 fontStyle: 600,
-                                lineHeight: 1.3
+                                lineHeight: 1.3,
+                                fontColor: "rgb(255,255,255)"
                             },
                             scales: {
                                 xAxes: [{
@@ -195,7 +196,7 @@ var app = new Vue({
                                 text: 'Humidity',
                                 fontSize: 24,
                                 fontStyle: 600,
-                                color: "rgb(54, 162, 235)",
+                                fontColor: "rgb(255,255,255)",
                                 lineHeight: 1.3
                             },
                             scales: {

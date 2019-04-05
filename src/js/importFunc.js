@@ -50,7 +50,7 @@ window.onload = takeLocationByIp
 function takeCity(e, callback) {
     let value = mainInput.value
 
-    e.preventDefault();
+    // e.preventDefault();
     if (value == "") {
         alert("Please enter city name")
     } else {

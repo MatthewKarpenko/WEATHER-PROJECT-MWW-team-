@@ -12,12 +12,23 @@
 @import "modules/mainPart.scss";
 @import "modules/searchBar.scss";
 
-canvas {
-    width: 60vh;
+
+.chartContainer {
+    width: 50%;
+
+
+}
+
+.tempChart,
+.pressureChart,
+.humidChart {
+    position: relative;
+    left: 50%;
+    padding: 20px 0px;
+    color: white;
 }
 
 canvas:empty {
     display: none;
     height: auto;
 }
-

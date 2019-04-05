@@ -1,6 +1,5 @@
- //import Chart from 'chart.js';
-// let buttonCity = document.querySelector('#getCityName');
-// let searchInput = document.querySelector('.search__input');
+import Chart from 'chart.js';
+
 var app = new Vue({
     el: "#app",
     data: {
@@ -18,27 +17,24 @@ var app = new Vue({
     methods: {
         getData: function () {
             this.loading = true;
-            console.log(this.loading)
+
             if (this.chart != null) {
                 this.chart.destroy();
             }
 
             axios
                 .get("https://api.openweathermap.org/data/2.5/forecast", {
-                    
                     params: {
                         q: this.city,
                         units: "metric",
                         appid: "1037ede13ab9fda54c38964a0a095a14"
                     }
-                    
                 })
-                
                 .then(response => {
 
                     this.coords = response.data.city.coord;
                     console.log(this.coords);
-                  
+
                     this.dates = response.data.list.map(list => {
                         return list.dt_txt;
                     });
@@ -188,6 +184,7 @@ var app = new Vue({
                                 label: "Humidity %",
                                 backgroundColor: "rgba(54, 162, 235, 0.5)",
                                 borderColor: "rgb(54, 162, 235)",
+                                color: "white",
                                 fill: false,
                                 data: this.humidities
                             }]
@@ -230,7 +227,7 @@ var app = new Vue({
                                 }]
                             },
                             legend: {
-                                display: false
+                                display: false,
                             },
                             ticks: {
                                 callback: function (value, index, values) {
@@ -249,5 +246,4 @@ var app = new Vue({
                 })
         }
     }
-    
 });

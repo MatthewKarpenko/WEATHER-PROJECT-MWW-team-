@@ -133,7 +133,8 @@ var app = new Vue({
                                 text: 'Pressure',
                                 fontSize: 24,
                                 fontStyle: 600,
-                                lineHeight: 1.3
+                                lineHeight: 1.3,
+                                fontColor: "rgb(255,255,255)"
                             },
                             scales: {
                                 xAxes: [{
@@ -155,7 +156,7 @@ var app = new Vue({
                                 }],
                                 yAxes: [{
                                     scaleLabel: {
-                                        display: true,
+                                        display: false,
                                         labelString: "Pressure (hPa)"
                                     },
                                     ticks: {
@@ -184,7 +185,6 @@ var app = new Vue({
                                 label: "Humidity %",
                                 backgroundColor: "rgba(54, 162, 235, 0.5)",
                                 borderColor: "rgb(54, 162, 235)",
-                                color: "white",
                                 fill: false,
                                 data: this.humidities
                             }]
@@ -195,6 +195,7 @@ var app = new Vue({
                                 text: 'Humidity',
                                 fontSize: 24,
                                 fontStyle: 600,
+                                color: "rgb(54, 162, 235)",
                                 lineHeight: 1.3
                             },
                             scales: {
@@ -217,7 +218,7 @@ var app = new Vue({
                                 }],
                                 yAxes: [{
                                     scaleLabel: {
-                                        display: true,
+                                        display: false,
                                         labelString: "Humidity (%)"
                                     },
                                     ticks: {
@@ -227,7 +228,7 @@ var app = new Vue({
                                 }]
                             },
                             legend: {
-                                display: false,
+                                display: false
                             },
                             ticks: {
                                 callback: function (value, index, values) {

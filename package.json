@@ -19,7 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
-    "autoprefixer": "^9.5.0",
+    "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.5",
     "chart.js": "^2.8.0",
     "copy-webpack-plugin": "^4.6.0",

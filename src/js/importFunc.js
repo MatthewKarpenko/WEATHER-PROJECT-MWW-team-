@@ -4,7 +4,7 @@ import {showMap} from './map.js';
 
 let findButton = document.querySelector('#getCityName');
 let mainInput = document.querySelector('.search__input');
-
+let check = 0
 
 let place = {
     cityName: null,
@@ -40,7 +40,8 @@ function takeLocationByIp() {
             place.y =json.lon;
             console.log(place.cityName,place.countryName,place.x,place.y)
             showMap(place.x, place.y);
-            fiveDays(place.cityName);
+            fiveDays(place.cityName,check);
+            check ++;
         })
 }
 

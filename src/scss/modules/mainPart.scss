@@ -37,6 +37,7 @@ body {
         color: $success-color;
         font-size: 110px;
         margin-left: 20px;
+        margin: auto;
     }
 
     .maxMinTemp {
@@ -74,6 +75,9 @@ body {
         span {
             color: $primary-color
         }
+        @include media ((
+         margin-left:(sm:0px)
+     ))
 }
 
 .wheatherType {
@@ -116,6 +120,7 @@ body {
 .wheatherForFiveDaysBlock {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .degreeType {
@@ -207,16 +212,36 @@ body {
 
 //Map styles
 #map-canvas {
-     width: 1000px;
+     width: 800px;
      height: 500px;
      margin: auto;
      margin-top: 30px;
-     //@include media ((
-        // width:(lg: 1000px, md: 700px, sm:400px),
-     //height:(lg: 500px, md:350px, sm:200px)))
+    margin-left:10px;
+    margin-right: 10px;
+     @include media ((
+         width:(md: 600px, sm:100px),
+     height:(lg: 500px, md:350px, sm:100px)))
 }
 
 .gm-style-iw {
     text-align: center;
 }
 
+//charts
+.chartContainer {
+    width: 50%;
+    
+}
+
+.tempChart,
+.pressureChart,
+.humidChart {
+    position: relative;
+    left: 50%;
+    
+}
+
+canvas:empty {
+    display: none;
+    height: auto;
+}

@@ -56,6 +56,8 @@
             border-radius: 0;
             background-position: 100% center;
         }
+        @include media ((
+         width:(md: 60%, sm:60%)))
     }
 }
 

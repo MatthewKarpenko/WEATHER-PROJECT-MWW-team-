@@ -1,10 +1,11 @@
 //let text = document.querySelector('.showJSON');
 //let button = document.querySelector('button');
-export function fiveDays(place) {
+export function fiveDays(place,checking) {
 let wheatherRequest;
 let temp;
 let time = 0;
 let cloneDiv;
+
 
 //object z ikonami
 let elements = {
@@ -15,7 +16,8 @@ let elements = {
     sun: document.querySelector('#sun'),
     drizzle: document.querySelector('#drizzleCloud'),
     snow: document.querySelector('#snow'),
-    wind: document.querySelector('#wind')
+    wind: document.querySelector('#wind'),
+    insertEl: document.querySelector('.forIconInsertion')
 };
 
 
@@ -96,17 +98,21 @@ function setIcon(node, description) {
             node.children[i].remove()
          }
     }
-    if (description == 'clear sky') {
-        cloneDiv = elements.sun.cloneNode(true)
-        node.appendChild(cloneDiv)
-    } else if (description == 'few clouds') {
-        cloneDiv = elements.cloud.cloneNode(true)
-        node.appendChild(cloneDiv)
-    } else if (description == 'light rain') {
-        cloneDiv = elements.rainCloud.cloneNode(true)
-        node.appendChild(cloneDiv)
-    }
+  chooseDiv(node,description)
 
+}
+
+function chooseDiv(place,text) {
+    if (text == 'clear sky') {
+        cloneDiv = elements.sun.cloneNode(true)
+        place.appendChild(cloneDiv)
+    } else if (text == 'few clouds') {
+        cloneDiv = elements.cloud.cloneNode(true)
+        place.appendChild(cloneDiv)
+    } else if (text  == 'light rain') {
+        cloneDiv = elements.rainCloud.cloneNode(true)
+        place.appendChild(cloneDiv)
+    }
 }
 
 /*function checking() {
@@ -117,17 +123,28 @@ function setIcon(node, description) {
 
 let mainTempClone = mainElements.mainTemp.cloneNode(true);
 function currentWeather() {
+
     getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
-        if (mainElements.info.firstElementChild.classList.contains('icon')) {
-            mainElements.info.firstElementChild.remove()
+        let jsonTemp = Math.round(json.main.temp) + '&deg;';
+        console.log(mainElements.info.firstElementChild.firstElementChild)
+        if(mainElements.info.firstElementChild.children.length > 0){
+        if (mainElements.info.firstElementChild.firstElementChild.classList.contains('icon')) {
+            mainElements.info.firstElementChild.firstElementChild.remove()
         }
-        setIcon(mainElements.info, json.weather[0].description);
-    
-        mainElements.info.firstElementChild.id = 'mainIcon'
-        mainTempClone.innerHTML = Math.round(json.main.temp) + '&deg;';
-        mainTempClone.classList.remove('hidden')
-        mainElements.info.appendChild(mainTempClone);
-        mainElements.temper.innerHTML = Math.round(json.main.temp) + '&deg;';
+    }
+        chooseDiv(elements.insertEl, json.weather[0].description)
+        mainElements.info.firstElementChild.id = 'mainIcon';
+        
+        mainElements.temper.innerHTML = jsonTemp;
+        
+        if(checking === 0) {
+            mainElements.info.appendChild(mainTempClone);
+            mainTempClone.innerHTML = jsonTemp;
+            mainTempClone.classList.remove('hidden')
+        }else {
+            mainElements.mainTemp.innerHTML = jsonTemp
+        }
+       
         mainElements.type.innerText = json.weather[0].description;
         mainElements.humidity.innerText = json.main.humidity + '%';
         mainElements.pressure.innerText = json.main.pressure + ' in';
@@ -136,7 +153,7 @@ function currentWeather() {
         mainElements.nameOfTheCity.innerHTML = place.charAt(0).toUpperCase() + place.slice(1);
         mainElements.humType.firstElementChild.innerHTML = json.weather[0].description;
     
-        
+    
     });
 }
 gettingJSONforFiveDays();

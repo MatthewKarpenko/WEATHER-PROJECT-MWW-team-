@@ -13,21 +13,3 @@
 @import "modules/searchBar.scss";
 
 
-.chartContainer {
-    width: 50%;
-
-
-}
-
-.tempChart,
-.pressureChart,
-.humidChart {
-    position: relative;
-    left: 50%;
-    padding: 20px 0px;
-}
-
-canvas:empty {
-    display: none;
-    height: auto;
-}

@@ -52,10 +52,9 @@ let options = {
           var status = xhr.status;
           if (status === 200) {
               callback(xhr.response);
-
           } else {
               callback(status, xhr.response);
-
+                
           }
       };
       xhr.send();
@@ -66,8 +65,7 @@ function gettingJSONforFiveDays() {
     getJSON("http://api.openweathermap.org/data/2.5/forecast?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
         
         wheatherRequest = json.list;
-      //przykład uzyskania json
-        console.log(wheatherRequest)
+      
         setFiveDaysWheather();
     });
 }
@@ -87,7 +85,7 @@ function setFiveDaysWheather() {
         elements.block[i].querySelector('.smallDegree').innerHTML = Math.round(wheatherRequest[time].main.temp) + '&deg;';
         elements.block[i].querySelector('.smallHumidity').innerHTML = wheatherRequest[time].main.humidity + '%';
         elements.block[i].querySelector('.smallPressure').innerHTML = Math.round(wheatherRequest[time].main.pressure) + ' in';
-        let weatherDescription = wheatherRequest[time].weather[0].description;
+        let weatherDescription = wheatherRequest[time].weather[0].id;
         setIcon(elements.block[i].querySelector('.fideDays-element'), weatherDescription)
     }
 }
@@ -102,15 +100,21 @@ function setIcon(node, description) {
 
 }
 
-function chooseDiv(place,text) {
-    if (text == 'clear sky') {
+function chooseDiv(place,id) {
+    if (id == 800) {
         cloneDiv = elements.sun.cloneNode(true)
         place.appendChild(cloneDiv)
-    } else if (text == 'few clouds') {
+    } else if (id > 800 && id < 805) {
         cloneDiv = elements.cloud.cloneNode(true)
         place.appendChild(cloneDiv)
-    } else if (text  == 'light rain') {
+    } else if (id > 199 && id < 532) {
         cloneDiv = elements.rainCloud.cloneNode(true)
+        place.appendChild(cloneDiv)
+    } else if (id > 599 && id < 623) {
+        cloneDiv = elements.snow.cloneNode(true)
+        place.appendChild(cloneDiv)
+    } else if (id > 700 && id < 782) {
+        cloneDiv = elements.cloud.cloneNode(true)
         place.appendChild(cloneDiv)
     }
 }
@@ -126,13 +130,13 @@ function currentWeather() {
 
     getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
         let jsonTemp = Math.round(json.main.temp) + '&deg;';
-        console.log(mainElements.info.firstElementChild.firstElementChild)
+      
         if(mainElements.info.firstElementChild.children.length > 0){
         if (mainElements.info.firstElementChild.firstElementChild.classList.contains('icon')) {
             mainElements.info.firstElementChild.firstElementChild.remove()
         }
     }
-        chooseDiv(elements.insertEl, json.weather[0].description)
+        chooseDiv(elements.insertEl, json.weather[0].id)
         mainElements.info.firstElementChild.id = 'mainIcon';
         
         mainElements.temper.innerHTML = jsonTemp;

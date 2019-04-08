@@ -2,6 +2,7 @@
 import {fiveDays} from './maps.js';
 import {showMap} from './map.js';
 
+
 let findButton = document.querySelector('#getCityName');
 let mainInput = document.querySelector('.search__input');
 let check = 0
@@ -23,8 +24,8 @@ var getJSON = function (url, callback) {
         if (status === 200) {
             callback(xhr.response);
         } else {
-            callback(status, xhr.response);
-
+             //tuzrób
+            return false
         }
     };
     xhr.send();
@@ -38,7 +39,6 @@ function takeLocationByIp() {
             place.countryName = json.country;
             place.x = json.lat;
             place.y =json.lon;
-            console.log(place.cityName,place.countryName,place.x,place.y)
             showMap(place.x, place.y);
             fiveDays(place.cityName,check);
             check ++;
@@ -53,6 +53,7 @@ function takeCity(e, callback) {
 
     // e.preventDefault();
     if (value == "") {
+        //tuzrób zamiast alert
         alert("Please enter city name")
     } else {
         place.cityName = value;

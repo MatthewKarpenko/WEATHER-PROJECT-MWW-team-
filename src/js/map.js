@@ -181,7 +181,7 @@ var getWeather = function (northLat, eastLng, southLat, westLng) {
 };
 // Take the JSON results and proccess them
 var proccessResults = function () {
-    console.log(this);
+
     var results = JSON.parse(this.responseText);
     if (results.list.length > 0) {
         resetData();

@@ -4,9 +4,7 @@
   "description": "My template",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
-    "build": "webpack --config ./build/webpack.build.conf.js",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js"
   },
   "browserslist": [
     "> 1%",

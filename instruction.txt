@@ -40,3 +40,5 @@ pracowac bedziemy w pliku index.html on sie znajduje tu src/index.html
 
 /*co robic przed commitem*/
 wpisujecie w terminalu w folderze z projektem : npm run build
+/*"build": "webpack --config ./build/webpack.build.conf.js",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"*/

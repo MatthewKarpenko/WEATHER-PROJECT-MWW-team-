@@ -13,6 +13,12 @@ body {
     background-color: $gray-color;
 }
 
+nav .brand-logo.center {
+    @include media((
+        font-size:(sm: 20px)
+    ))
+}
+
 //CURRENT WEATHER SECTION
 
 .cityName {
@@ -120,7 +126,6 @@ body {
 .wheatherForFiveDaysBlock {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .degreeType {
@@ -167,6 +172,7 @@ body {
        cursor: pointer;
        margin-left: 12px;
        transition: 0.2s;
+         
 }
 
 .wholeBlock:hover {
@@ -193,6 +199,7 @@ body {
         height: 50px;
         cursor: pointer;
         transition: 0.3s;
+        
 }
 
 .directionArrow:hover {
@@ -206,21 +213,20 @@ body {
 }
 
 .findCityContainer {
-    margin-bottom: 40px;
-    
+    margin-bottom: 40px;   
 }
 
 //Map styles
 #map-canvas {
-     width: 800px;
+     width: 90%;
      height: 500px;
      margin: auto;
      margin-top: 30px;
-    margin-left:10px;
-    margin-right: 10px;
+     margin-bottom: 20px;
+
      @include media ((
-         width:(md: 600px, sm:100px),
-     height:(lg: 500px, md:350px, sm:100px)))
+         width:(md: 100%, sm:95%),
+     height:(sm: 300px)))
 }
 
 .gm-style-iw {
@@ -244,4 +250,35 @@ body {
 canvas:empty {
     display: none;
     height: auto;
+}
+
+.moreInfo .line {
+    color: white;
+}
+
+@media only screen and (max-width: 1155px) {
+    .wheatherForFiveDaysBlock {
+        flex-direction: column;
+        justify-content:center;
+    }
+    
+    .directionArrow {
+        margin:auto;
+    }
+
+    .wholeBlock {
+          margin:auto;
+          margin-top: 5px;
+          margin-bottom: 5px;
+    }
+
+    .moreInfo {
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+   .moreInfo{
+        width: 300px;
+   }
 }

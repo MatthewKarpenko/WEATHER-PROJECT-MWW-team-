@@ -62,7 +62,7 @@ let options = {
 
 
 function gettingJSONforFiveDays() {
-    getJSON("http://api.openweathermap.org/data/2.5/forecast?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
+    getJSON("https://api.openweathermap.org/data/2.5/forecast?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
         
         wheatherRequest = json.list;
       
@@ -128,7 +128,7 @@ function chooseDiv(place,id) {
 let mainTempClone = mainElements.mainTemp.cloneNode(true);
 function currentWeather() {
 
-    getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
+    getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
         let jsonTemp = Math.round(json.main.temp) + '&deg;';
       
         if(mainElements.info.firstElementChild.children.length > 0){

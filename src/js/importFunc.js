@@ -34,13 +34,13 @@ var getJSON = function (url, callback) {
 
 //Take current location of user
 function takeLocationByIp() {
-    getJSON("//ip-api.com/json/",
+    getJSON("//api.ipstack.com/156.17.137.73?access_key=ff3d09f2ea5abe10103f62333c221102",
         function (json) {
           
             place.cityName = json.city;
-            place.countryName = json.country;
-            place.x = json.lat;
-            place.y =json.lon;
+            place.countryName = json.country_name;
+            place.x = json.latitude;
+            place.y =json.longitude;
             showMap(place.x, place.y);
             fiveDays(place.cityName,check);
             check ++;
@@ -64,7 +64,7 @@ function takeCity(e, callback) {
 }
 
 function shareCityName() {
-    getJSON("//api.openweathermap.org/data/2.5/weather?q=" + place.cityName + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1",
+    getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + place.cityName + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1",
         function (json) {
             place.x = json.coord.lat;
             place.y = json.coord.lon;

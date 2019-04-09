@@ -18,7 +18,7 @@ let place = {
 //request to check weather
 var getJSON = function (url, callback) {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
+    xhr.open('GET', url, true);
     xhr.responseType = 'json';
     xhr.onload = function () {
         var status = xhr.status;
@@ -34,15 +34,20 @@ var getJSON = function (url, callback) {
 
 //Take current location of user
 function takeLocationByIp() {
-    getJSON("//api.ipstack.com/156.17.137.73?access_key=ff3d09f2ea5abe10103f62333c221102",
+    getJSON("https://api.ipdata.co/?api-key=905a23d9c0ba4910406a83a900e6b1033436fa1a707de2915a5fe2a7",
         function (json) {
-          
+          console.log(json)
             place.cityName = json.city;
             place.countryName = json.country_name;
             place.x = json.latitude;
             place.y =json.longitude;
             showMap(place.x, place.y);
-            fiveDays(place.cityName,check);
+            if (place.cityName == null) {
+                 fiveDays(place.countryName, check);
+            }else {
+                fiveDays(place.cityName, check);
+            }
+           
             check ++;
         })
 }

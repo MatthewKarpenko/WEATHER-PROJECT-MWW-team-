@@ -231,25 +231,32 @@ nav .brand-logo.center {
 
 // charts
 
-// .chartContainer {
-//     padding: 10%;
-
-// }
+.chartContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .tempChart,
 .pressureChart,
 .humidChart {
-    position: relative;
-    left: 11%;
-    margin: 0% 1%;
-    max-width: 70%;
+    // position: relative;
+    // left: 11%;
+
+    margin: 1% 1%;
+    width: 70%;
 }
-
-
 
 canvas:empty {
     display: none;
     height: auto;
+}
+
+@media only screen and (max-width: 540px) {
+    .chartContainer {
+        display: none;
+    }
 }
 
 .moreInfo .line {
@@ -281,11 +288,5 @@ canvas:empty {
 @media only screen and (max-width: 600px) {
     .moreInfo {
         width: 300px;
-    }
-}
-
-@media only screen and (max-width: 540px) {
-    .chartContainer {
-        display: none;
     }
 }

@@ -1,6 +1,6 @@
 //let text = document.querySelector('.showJSON');
 //let button = document.querySelector('button');
-export function fiveDays(place,checking) {
+export function fiveDays(place,checking,elements,mainElements,options) {
 let wheatherRequest;
 let temp;
 let time = 0;
@@ -8,41 +8,7 @@ let cloneDiv;
 
 
 //object z ikonami
-let elements = {
-    block: document.querySelectorAll('.wholeBlock'),
-    cloud: document.querySelector('#simpleCloud'),
-    rainCloud: document.querySelector('#rainCloud'),
-    thunder: document.querySelector('#thunderCloud'),
-    sun: document.querySelector('#sun'),
-    drizzle: document.querySelector('#drizzleCloud'),
-    snow: document.querySelector('#snow'),
-    wind: document.querySelector('#wind'),
-    insertEl: document.querySelector('.forIconInsertion')
-};
 
-
-let mainElements = {
-    mainTemp: document.querySelector('.degreeNumber'),
-    type: document.querySelector('#main'),
-    temper: document.querySelector('#temperature'),
-    humidity: document.querySelector('#humidity'),
-    humType: document.querySelector('.wheatherType'),
-    pressure: document.querySelector('#pressure'),
-    info: document.querySelector('.mainInfo'),
-    nameOfTheCity: document.querySelector('.cityName')
-}
-
-let options = {
-    era: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    weekday: 'short',
-    timezone: 'UTC',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric'
-};
 
   var getJSON = function (url, callback) {
       var xhr = new XMLHttpRequest();
@@ -130,7 +96,7 @@ function currentWeather() {
 
     getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + place + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1", function (json) {
         let jsonTemp = Math.round(json.main.temp) + '&deg;';
-      
+        mainElements.mainTemp = document.querySelector('.degreeNumber')
         if(mainElements.info.firstElementChild.children.length > 0){
         if (mainElements.info.firstElementChild.firstElementChild.classList.contains('icon')) {
             mainElements.info.firstElementChild.firstElementChild.remove()
@@ -140,15 +106,19 @@ function currentWeather() {
         mainElements.info.firstElementChild.id = 'mainIcon';
         
         mainElements.temper.innerHTML = jsonTemp;
-        
+       
         if(checking === 0) {
             mainElements.info.appendChild(mainTempClone);
             mainTempClone.innerHTML = jsonTemp;
             mainTempClone.classList.remove('hidden')
         }else {
+            
             mainElements.mainTemp.innerHTML = jsonTemp
         }
-       
+        if (json.weather[0].description.length > 12) {
+            elements.hideIfLong.classList.add('hidden')
+        }
+        console.log(json.weather[0].description.length)
         mainElements.type.innerText = json.weather[0].description;
         mainElements.humidity.innerText = json.main.humidity + '%';
         mainElements.pressure.innerText = json.main.pressure + ' in';

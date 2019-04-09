@@ -1,7 +1,42 @@
 
 import {fiveDays} from './maps.js';
 import {showMap} from './map.js';
+let elements = {
+    block: document.querySelectorAll('.wholeBlock'),
+    cloud: document.querySelector('#simpleCloud'),
+    rainCloud: document.querySelector('#rainCloud'),
+    thunder: document.querySelector('#thunderCloud'),
+    sun: document.querySelector('#sun'),
+    drizzle: document.querySelector('#drizzleCloud'),
+    snow: document.querySelector('#snow'),
+    wind: document.querySelector('#wind'),
+    insertEl: document.querySelector('.forIconInsertion'),
+    hideIfLong: document.querySelector('#hideIfLong')
+};
 
+
+let mainElements = {
+    mainTemp: document.querySelector('.degreeNumber'),
+    type: document.querySelector('#main'),
+    temper: document.querySelector('#temperature'),
+    humidity: document.querySelector('#humidity'),
+    humType: document.querySelector('.wheatherType'),
+    pressure: document.querySelector('#pressure'),
+    info: document.querySelector('.mainInfo'),
+    nameOfTheCity: document.querySelector('.cityName')
+}
+
+let options = {
+    era: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'short',
+    timezone: 'UTC',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+};
 
 
 let findButton = document.querySelector('#getCityName');
@@ -42,10 +77,11 @@ function takeLocationByIp() {
             place.x = json.latitude;
             place.y =json.longitude;
             showMap(place.x, place.y);
-            if (place.cityName == null) {
-                 fiveDays(place.countryName, check);
+            console.log(place.cityName)
+            if (place.cityName == '') {
+                 fiveDays(place.countryName, check, elements, mainElements, options);
             }else {
-                fiveDays(place.cityName, check);
+                fiveDays(place.cityName, check, elements, mainElements, options);
             }
            
             check ++;
@@ -74,7 +110,7 @@ function shareCityName() {
             place.x = json.coord.lat;
             place.y = json.coord.lon;
               showMap(place.x, place.y);
-            fiveDays(place.cityName)
+            fiveDays(place.cityName,undefined, elements, mainElements, options)
         });
 
 }

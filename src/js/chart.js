@@ -67,6 +67,7 @@ var app = new Vue({
                             }]
                         },
                         options: {
+                            // maintainAspectRatio: true,
                             title: {
                                 display: true,
                                 text: 'Temperature',
@@ -117,6 +118,7 @@ var app = new Vue({
 
                     var ctx2 = document.getElementById("myChartPressure");
                     this.chart = new Chart(ctx2, {
+                        // maintainAspectRatio: false,
                         type: "line",
                         data: {
                             labels: this.dates,
@@ -179,6 +181,7 @@ var app = new Vue({
 
                     var ctx3 = document.getElementById("myChartHumid");
                     this.chart = new Chart(ctx3, {
+                        // maintainAspectRatio: false,
                         type: "line",
                         data: {
                             labels: this.dates,

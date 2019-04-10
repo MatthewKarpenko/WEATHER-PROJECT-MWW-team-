@@ -117,6 +117,8 @@ function currentWeather() {
         }
         if (json.weather[0].description.length > 12) {
             elements.hideIfLong.classList.add('hidden')
+        }else {
+            elements.hideIfLong.classList.remove('hidden')
         }
         console.log(json.weather[0].description.length)
         mainElements.type.innerText = json.weather[0].description;

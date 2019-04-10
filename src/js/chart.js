@@ -1,12 +1,12 @@
 let int = setInterval(() => {
-    console.log(1)
+    
     if (document.querySelector('.cityName').innerText.length > 1 ) {
         app.city = document.querySelector('.cityName').innerText
          app.getData()
         clearInterval(int)
     }
 },100)
-console.log(document.querySelector('.cityName').innerText)
+
 var app = new Vue({
     el: "#app",
     data: {
@@ -40,7 +40,7 @@ var app = new Vue({
                 .then(response => {
 
                     this.coords = response.data.city.coord;
-                    console.log(this.coords);
+                    
 
                     this.dates = response.data.list.map(list => {
                         return list.dt_txt;

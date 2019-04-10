@@ -115,15 +115,19 @@ function currentWeather() {
             
             mainElements.mainTemp.innerHTML = jsonTemp
         }
+        
         if (json.weather[0].description.length > 12) {
-            elements.hideIfLong.classList.add('hidden')
+            elements.hideIfLong.classList.add('hidden');
+            if(window.innerWidth < 602) {
+                elements.hideLine.classList.add('hidden')
+            }
         }else {
             elements.hideIfLong.classList.remove('hidden')
         }
     
         mainElements.type.innerText = json.weather[0].description;
         mainElements.humidity.innerText = json.main.humidity + '%';
-        mainElements.pressure.innerText = json.main.pressure + ' in';
+        mainElements.pressure.innerText = json.main.pressure + 'in';
         mainElements.humType.firstChild.innerText = json.weather[0].description;
         mainElements.humType.children[1].innerHTML = '<i class="material-icons">invert_colors</i>' + json.main.humidity + '%';
         mainElements.nameOfTheCity.innerHTML = place.charAt(0).toUpperCase() + place.slice(1);

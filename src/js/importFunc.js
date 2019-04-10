@@ -13,6 +13,7 @@ let elements = {
     wind: document.querySelector('#wind'),
     insertEl: document.querySelector('.forIconInsertion'),
     hideIfLong: document.querySelector('#hideIfLong'),
+    hideLine: document.querySelector('#hideLines'),
     notFound: document.querySelector('.cityNotFound')
 };
 

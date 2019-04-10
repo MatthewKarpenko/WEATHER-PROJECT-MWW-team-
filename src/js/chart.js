@@ -1,4 +1,4 @@
-import Chart from 'chart.js';
+
 
 var app = new Vue({
     el: "#app",

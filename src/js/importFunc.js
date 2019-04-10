@@ -1,6 +1,7 @@
 
 import {fiveDays} from './maps.js';
 import {showMap} from './map.js';
+
 let elements = {
     block: document.querySelectorAll('.wholeBlock'),
     cloud: document.querySelector('#simpleCloud'),
@@ -11,7 +12,8 @@ let elements = {
     snow: document.querySelector('#snow'),
     wind: document.querySelector('#wind'),
     insertEl: document.querySelector('.forIconInsertion'),
-    hideIfLong: document.querySelector('#hideIfLong')
+    hideIfLong: document.querySelector('#hideIfLong'),
+    notFound: document.querySelector('.cityNotFound')
 };
 
 
@@ -60,7 +62,7 @@ var getJSON = function (url, callback) {
         if (status === 200) {
             callback(xhr.response);
         } else {
-             //tuzrób
+            elements.notFound.classList.remove('hidden')
             return false
         }
     };
@@ -76,13 +78,14 @@ function takeLocationByIp() {
             place.countryName = json.country_name;
             place.x = json.latitude;
             place.y =json.longitude;
-            showMap(place.x, place.y);
             console.log(place.cityName)
             if (place.cityName == '') {
                  fiveDays(place.countryName, check, elements, mainElements, options);
             }else {
                 fiveDays(place.cityName, check, elements, mainElements, options);
             }
+            
+            showMap(place.x, place.y);
            
             check ++;
         })

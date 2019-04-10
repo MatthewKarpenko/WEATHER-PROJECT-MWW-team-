@@ -1,10 +1,17 @@
-
-
+let int = setInterval(() => {
+    console.log(1)
+    if (document.querySelector('.cityName').innerText.length > 1 ) {
+        app.city = document.querySelector('.cityName').innerText
+         app.getData()
+        clearInterval(int)
+    }
+},100)
+console.log(document.querySelector('.cityName').innerText)
 var app = new Vue({
     el: "#app",
     data: {
         chart: null,
-        city: "",
+        city: "Poland",
         dates: [],
         temps: [],
         pressures: [],
@@ -252,3 +259,4 @@ var app = new Vue({
         }
     }
 });
+

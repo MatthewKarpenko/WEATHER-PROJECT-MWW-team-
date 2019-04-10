@@ -62,7 +62,7 @@ var getJSON = function (url, callback) {
         if (status === 200) {
             callback(xhr.response);
         } else {
-            elements.notFound.classList.remove('hidden')
+            displayError(elements.notFound)
             return false
         }
     };
@@ -73,16 +73,18 @@ var getJSON = function (url, callback) {
 function takeLocationByIp() {
     getJSON("https://api.ipdata.co/?api-key=905a23d9c0ba4910406a83a900e6b1033436fa1a707de2915a5fe2a7",
         function (json) {
-          console.log(json)
+          
             place.cityName = json.city;
             place.countryName = json.country_name;
             place.x = json.latitude;
             place.y =json.longitude;
-            console.log(place.cityName)
+        
             if (place.cityName == '') {
                  fiveDays(place.countryName, check, elements, mainElements, options);
+                 
             }else {
                 fiveDays(place.cityName, check, elements, mainElements, options);
+                
             }
             
             showMap(place.x, place.y);
@@ -96,7 +98,7 @@ window.onload = takeLocationByIp
 //find city functionality
 function takeCity(e, callback) {
     let value = mainInput.value
-
+    console.log('dlfj')
     // e.preventDefault();
     if (value == "") {
         //tuzrób zamiast alert
@@ -111,13 +113,20 @@ function shareCityName() {
     getJSON("https://api.openweathermap.org/data/2.5/weather?q=" + place.cityName + "&units=metric&APPID=e41afbeea9601a8db44ff5ecb4b347d1",
         function (json) {
             place.x = json.coord.lat;
+            console.log("gal")
             place.y = json.coord.lon;
               showMap(place.x, place.y);
             fiveDays(place.cityName,undefined, elements, mainElements, options)
+             
         });
 
 }
 
-findButton.addEventListener('click', takeCity);
+function displayError(element) {
+    element.style.display = 'block';
+    setTimeout(() => {
+        element.style.display = 'none'
+    },2000)
+}
 
-//Map functionality
+findButton.addEventListener('click', takeCity);

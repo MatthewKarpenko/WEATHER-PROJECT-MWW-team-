@@ -120,7 +120,7 @@ function currentWeather() {
         }else {
             elements.hideIfLong.classList.remove('hidden')
         }
-        console.log(json.weather[0].description.length)
+    
         mainElements.type.innerText = json.weather[0].description;
         mainElements.humidity.innerText = json.main.humidity + '%';
         mainElements.pressure.innerText = json.main.pressure + ' in';

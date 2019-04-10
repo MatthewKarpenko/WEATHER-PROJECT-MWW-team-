@@ -252,13 +252,14 @@ canvas:empty {
     display: none;
     height: auto;
 }
-.cityNotFound{
+.cityNotFound {
+    display: none;
     width: 200px;
     height: 100px;
-    background-color: #fc5c65;
+    background-color: $danger-color;
     margin: auto;
     margin-top: 10px;
-    border: solid 3px $default-color;
+    border: solid 3px $danger-color;
     border-radius: 15px;
     text-align: center;
     vertical-align: middle;

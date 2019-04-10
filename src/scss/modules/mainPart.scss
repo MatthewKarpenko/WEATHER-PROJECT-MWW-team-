@@ -252,6 +252,25 @@ canvas:empty {
     display: none;
     height: auto;
 }
+.cityNotFound{
+    width: 200px;
+    height: 100px;
+    background-color: #fc5c65;
+    margin: auto;
+    margin-top: 10px;
+    border: solid 3px $default-color;
+    border-radius: 15px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 22px;
+    font-weight: 400;
+ 
+ }
+ 
+ .cityNotFound p{
+    color: white;
+    margin-top: 15%;
+ }
 
 @media only screen and (max-width: 540px) {
     .chartContainer {
